@@ -1,7 +1,8 @@
 import React from 'react';
 import './search.css';
 
-const Search = ({ geo, loading, onSubmit, onClick, search, onChange }) => {
+const Search = ({ searchData }) => {
+  const { geo, loading, onSubmit, onClick, search, onChange } = searchData;
   return (
     <div className="search">
       <form name="search" onSubmit={onSubmit}>
@@ -29,7 +30,8 @@ const Search = ({ geo, loading, onSubmit, onClick, search, onChange }) => {
                 className="search-result"
                 key={index + item.name}
               >
-                {item.name} {isNaN(search) ? `, ${item.state}` : null}
+                {item.name}
+                {isNaN(search) ? `, ${item.state}` : null}
               </div>
             ))}
           </div>
