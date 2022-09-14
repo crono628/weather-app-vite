@@ -1,39 +1,39 @@
 import React from 'react';
-import { API } from '../api';
 import './search.css';
 
-const Search = () => {
-  const [search, setSearch] = React.useState('');
-  const [results, setResults] = React.useState([]);
-
-  const handleChange = (e) => {
-    setSearch(e.target.value);
-    console.log('search', search);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      let res = await fetch(
-        isNaN(search) ? API.GEOCODE_NAME(search) : API.GEOCODE_ZIP(search)
-      );
-      let data = await res.json();
-      console.log('data', data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
+const Search = ({ geo, loading, onSubmit, onClick, search, onChange }) => {
   return (
     <div className="search">
-      <form name="search" onSubmit={handleSubmit}>
+      <form name="search" onSubmit={onSubmit}>
         <input
           type="text"
           value={search}
-          onChange={handleChange}
+          onChange={onChange}
           placeholder="Enter a city or zip code"
         />
         <button type="submit">Search</button>
+        <div>
+          <div
+            className={`${
+              loading === true
+                ? 'vert-down'
+                : loading === false
+                ? 'vert-up'
+                : 'hidden'
+            } dropdown`}
+          >
+            <div className="search-title">Search Results:</div>
+            {geo?.map((item, index) => (
+              <div
+                onClick={onClick}
+                className="search-result"
+                key={index + item.name}
+              >
+                {item.name} {isNaN(search) ? `, ${item.state}` : null}
+              </div>
+            ))}
+          </div>
+        </div>
       </form>
     </div>
   );

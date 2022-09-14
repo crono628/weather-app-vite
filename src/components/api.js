@@ -8,5 +8,5 @@ export const API = {
   GEOCODE_ZIP: (zip) =>
     `https://api.openweathermap.org/geo/1.0/zip?zip=${zip}&appid=${API_KEY}`,
   WEATHER: (lat, lon) =>
-    `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=minutely&units=imperial&appid=${API_KEY}`,
+    `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=minutely&appid=${API_KEY}`,
 };
