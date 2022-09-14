@@ -1,5 +1,6 @@
 import React from 'react';
 import { API } from '../api';
+import './search.css';
 
 const Search = () => {
   const [search, setSearch] = React.useState('');
@@ -24,9 +25,14 @@ const Search = () => {
   };
 
   return (
-    <div>
-      <form action="" onSubmit={handleSubmit}>
-        <input type="text" value={search} onChange={handleChange} />
+    <div className="search">
+      <form name="search" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={search}
+          onChange={handleChange}
+          placeholder="Enter a city or zip code"
+        />
         <button type="submit">Search</button>
       </form>
     </div>

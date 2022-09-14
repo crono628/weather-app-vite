@@ -1,12 +1,13 @@
 import React from 'react';
 import Search from './components/Search/Search';
-import './App.css';
+import './app.css';
 
 const App = () => {
   return (
-    <div className="container">
-      App
-      <Search />
+    <div className="app">
+      <div className="container">
+        <Search />
+      </div>
     </div>
   );
 };
