@@ -5,7 +5,7 @@
   justify-content: center;
   width: 100%;
   color: white;
-  font-size: calc(10px + 2vmin);
+  font-size: 1rem;
   font-family: 'Roboto', sans-serif;
   font-weight: 200;
   text-align: center;
@@ -22,12 +22,7 @@
 }
 
 .current-weather div {
-  margin: 10px 0;
-}
-
-.current-date {
-  font-size: 1rem;
-  text-align: center;
+  margin: 7px 0;
 }
 
 .current-city {
@@ -38,4 +33,11 @@
 .current-temp {
   font-size: 3rem;
   font-weight: 500;
+}
+
+.daily-high-low,
+.sun {
+  font-size: 1rem;
+  display: flex;
+  gap: 20px;
 }

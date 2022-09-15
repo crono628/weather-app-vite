@@ -8,6 +8,7 @@ const Current = ({ currentData }) => {
 
   const [date, setDate] = useState('');
   const [sun, setSun] = useState({});
+  const [temp, setTemp] = useState({});
 
   useEffect(() => {
     if (weather.current) {
@@ -27,31 +28,35 @@ const Current = ({ currentData }) => {
         )}`,
         set: `${hourDisplay(sunset, timezoneOffset)}:${minutesDisplay(sunset)}`,
       });
+      setTemp({
+        high: Math.round(weather.daily[0].temp.max) + '°F',
+        low: Math.round(weather.daily[0].temp.min) + '°F',
+        current: Math.round(weather.current.temp) + '°F',
+      });
     }
   }, [currentData]);
-
-  const temperature = () => {
-    if (weather.current) {
-      return Math.round(weather.current.temp) + '°F';
-    } else {
-      return '';
-    }
-  };
 
   return (
     <div className="current">
       {loaded && (
         <div className="current-weather">
-          <div className="current-date">{date}</div>
-          <div className="current-city">{choice?.name}</div>
-          <div className="current-temp">{temperature()}</div>
+          <div>
+            {date}
+            <div className="sun">
+              <div>Sunrise {sun.rise}</div>
+              <div>Sunset {sun.set}</div>
+            </div>
+          </div>
           <div>
             {weather.current.weather[0].description.charAt(0).toUpperCase() +
               weather.current.weather[0].description.slice(1)}
           </div>
-          <div>
-            <div>Sunrise {sun.rise}</div>
-            <div>Sunset {sun.set}</div>
+          <div className="current-city">{choice?.name}</div>
+          <div className="current-temp">
+            {temp.current}
+            <div className="daily-high-low">
+              <div>Lo: {temp.low}</div> <div>Hi: {temp.high}</div>
+            </div>
           </div>
         </div>
       )}
