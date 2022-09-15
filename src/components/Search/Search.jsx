@@ -13,30 +13,30 @@ const Search = ({ searchData }) => {
           placeholder="Enter a city or zip code"
         />
         <button type="submit">Search</button>
-        <div>
-          <div
-            className={`${
-              loading === true
-                ? 'vert-down'
-                : loading === false
-                ? 'vert-up'
-                : 'hidden'
-            } dropdown`}
-          >
-            <div className="search-title">Search Results:</div>
-            {geo?.map((item, index) => (
-              <div
-                onClick={onClick}
-                className="search-result"
-                key={index + item.name}
-              >
-                {item.name}
-                {isNaN(search) ? `, ${item.state}` : null}
-              </div>
-            ))}
-          </div>
-        </div>
       </form>
+      <div>
+        <div
+          className={`${
+            loading === true
+              ? 'vert-down'
+              : loading === false
+              ? 'vert-up'
+              : 'hidden'
+          } dropdown`}
+        >
+          <div className="search-title">Search Results:</div>
+          {geo?.map((item, index) => (
+            <div
+              onClick={onClick}
+              className="search-result"
+              key={index + item.name}
+            >
+              {item.name}
+              {isNaN(search) ? `, ${item.state}` : null}
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
