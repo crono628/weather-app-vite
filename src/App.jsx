@@ -1,15 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Search from './components/Search/Search';
 import './app.css';
 import { API } from './components/api';
 import Current from './components/Current/Current';
+import Hourly from './components/Hourly/Hourly';
 
 const App = () => {
-  const [weather, setWeather] = React.useState([]);
-  const [geo, setGeo] = React.useState(null);
-  const [loading, setLoading] = React.useState(null);
-  const [search, setSearch] = React.useState('');
-  const [choice, setChoice] = React.useState(null);
+  const [weather, setWeather] = useState([]);
+  const [geo, setGeo] = useState(null);
+  const [loading, setLoading] = useState(null);
+  const [search, setSearch] = useState('');
+  const [choice, setChoice] = useState(null);
 
   const handleChange = (e) => {
     setSearch(e.target.value);
@@ -63,6 +64,7 @@ const App = () => {
       <div className="container">
         <Search searchData={searchData} />
         <Current currentData={currentData} />
+        <Hourly currentData={currentData} />
       </div>
     </div>
   );
