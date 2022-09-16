@@ -24,6 +24,12 @@ body {
   .hourly-container {
     width: 80%;
   }
+  .scroll-prompt {
+    margin-left: 12%;
+  }
+  .daily-container {
+    width: 80%;
+  }
 }
 
 @media screen and (min-width: 1024px) {

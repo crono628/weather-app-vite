@@ -1,5 +1,6 @@
 .hourly {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -42,4 +43,13 @@
 
 .hourly-temp {
   margin: 7px 0;
+}
+
+.scroll-prompt {
+  font-size: 0.75rem;
+  font-weight: 100;
+  margin-left: 10px;
+  align-self: flex-start;
+  margin-left: 2%;
+  margin-top: 5px;
 }

@@ -40,22 +40,28 @@ const Hourly = ({ currentData }) => {
   }, [currentData]);
 
   return (
-    <div className="hourly">
-      {loaded && (
-        <div className="hourly-container">
-          {time.map((hour, index) => {
-            return (
-              <div className="hourly-hour" key={index}>
-                <div className="hourly-date">{date[index]}</div>
-                <div className="hourly-time">{hour}</div>
-                <div className="hourly-temp">{temp[index]}</div>
-                <div>{description[index]}</div>
-              </div>
-            );
-          })}
+    loaded && (
+      <div>
+        <div className="hourly">
+          {loaded && (
+            <div className="hourly-container">
+              {time.map((hour, index) => {
+                return (
+                  <div className="hourly-hour" key={index}>
+                    <div className="hourly-date">{date[index]}</div>
+                    <div className="hourly-time">{hour}</div>
+                    <div className="hourly-temp">{temp[index]}</div>
+                    <div>{description[index]}</div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
+          <div className="scroll-prompt">Scroll for hourly forecast →</div>
         </div>
-      )}
-    </div>
+      </div>
+    )
   );
 };
 

@@ -4,6 +4,7 @@ import './app.css';
 import { API } from './components/api';
 import Current from './components/Current/Current';
 import Hourly from './components/Hourly/Hourly';
+import Daily from './components/Daily/Daily';
 
 const App = () => {
   const [weather, setWeather] = useState([]);
@@ -65,6 +66,7 @@ const App = () => {
         <Search searchData={searchData} />
         <Current currentData={currentData} />
         <Hourly currentData={currentData} />
+        <Daily currentData={currentData} />
       </div>
     </div>
   );
