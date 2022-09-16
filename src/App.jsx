@@ -6,7 +6,7 @@ import Current from './components/Current/Current';
 import Hourly from './components/Hourly/Hourly';
 import Daily from './components/Daily/Daily';
 
-const App = () => {
+function App() {
   const [weather, setWeather] = useState([]);
   const [geo, setGeo] = useState(null);
   const [loading, setLoading] = useState(null);
@@ -70,6 +70,6 @@ const App = () => {
       </div>
     </div>
   );
-};
+}
 
 export default App;
