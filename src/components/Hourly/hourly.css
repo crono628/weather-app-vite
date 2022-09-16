@@ -14,7 +14,7 @@
   padding: 10px;
   gap: 20px;
   overflow-x: scroll;
-  width: 97%;
+  width: 90%;
   scrollbar-width: none;
   box-shadow: 0 0 5px 0 rgba(255, 254, 254, 0.75);
   border-radius: 5px;
@@ -50,6 +50,6 @@
   font-weight: 100;
   margin-left: 10px;
   align-self: flex-start;
-  margin-left: 2%;
+  margin-left: 5%;
   margin-top: 5px;
 }
