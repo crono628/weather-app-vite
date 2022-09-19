@@ -27,6 +27,7 @@ const Search = ({ searchData }) => {
           <div className="search-title">Search Results:</div>
           {geo?.map((item, index) => (
             <div
+              data-search-position={index}
               onClick={onClick}
               className="search-result"
               key={index + item.name}

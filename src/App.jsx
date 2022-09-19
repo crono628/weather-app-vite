@@ -32,11 +32,11 @@ function App() {
   };
 
   const handleWeather = async (e) => {
-    let city = e.currentTarget.innerText.split(',').slice(0, 1);
-    const selection = geo.filter((item) => item.name === city[0]);
-    setChoice(selection[0]);
+    const clicked = e.target.dataset.searchPosition;
+    const city = geo[clicked];
+    setChoice(city);
     try {
-      let res = await fetch(API.WEATHER(selection[0].lat, selection[0].lon));
+      let res = await fetch(API.WEATHER(city.lat, city.lon));
       let data = await res.json();
       setWeather(data);
     } catch (error) {

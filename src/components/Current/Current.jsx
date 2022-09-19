@@ -12,7 +12,7 @@ const Current = ({ currentData }) => {
 
   useEffect(() => {
     if (weather.current) {
-      console.log('weather', weather);
+      // console.log('weather', weather);
       let todaysDate = new Date(weather.current.dt * 1000);
       let sunrise = new Date(weather.current.sunrise * 1000);
       let sunset = new Date(weather.current.sunset * 1000);
