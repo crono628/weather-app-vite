@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './daily.css';
+import { iconSelection } from '../helpers';
 
 const Daily = ({ currentData }) => {
   const { weather, loading } = currentData;
   const [date, setDate] = useState([]);
   const [temp, setTemp] = useState([]);
-  const [description, setDescription] = useState([]);
+  const [icons, setIcons] = useState([]);
   const loaded = Boolean(loading === false && weather.hourly);
 
   useEffect(() => {
@@ -15,11 +16,8 @@ const Daily = ({ currentData }) => {
         let low = Math.round(day.temp.min);
         return `${low}°F / ${high}°F`;
       });
-      let descriptions = weather.daily.map((day) => {
-        return (
-          day.weather[0].description.charAt(0).toUpperCase() +
-          day.weather[0].description.slice(1)
-        );
+      let iconIds = weather.daily.map((day) => {
+        return day.weather[0].id;
       });
       let dates = weather.daily.map((hour) => {
         let todaysDate = new Date(hour.dt * 1000);
@@ -27,7 +25,7 @@ const Daily = ({ currentData }) => {
       });
       setDate(dates);
       setTemp(temps);
-      setDescription(descriptions);
+      setIcons(iconIds);
     }
   }, [currentData]);
 
@@ -40,7 +38,9 @@ const Daily = ({ currentData }) => {
               <div className="daily-day" key={index}>
                 <div className="daily-date">{day}</div>
                 <div className="daily-temp">{temp[index]}</div>
-                <div className="daily-desc">{description[index]}</div>
+                <div className="daily-icon">
+                  <img src={iconSelection(icons[index])} alt="weather icon" />
+                </div>
               </div>
             );
           })}

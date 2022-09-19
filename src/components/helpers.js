@@ -1,3 +1,9 @@
+import thunderstorm from '../assets/thunderstorm.svg';
+import sunny from '../assets/sunny.svg';
+import cloudy from '../assets/cloudy.svg';
+import rainy from '../assets/rainy.svg';
+import snow from '../assets/snow.svg';
+
 function minutesDisplay(date) {
   let minutes = date.getMinutes().toString();
   if (minutes.length === 1) {
@@ -15,4 +21,20 @@ function hourDisplay(date, offset) {
   return hours;
 }
 
-export { minutesDisplay, hourDisplay };
+function iconSelection(num) {
+  if (num < 300) {
+    return thunderstorm;
+  } else if (num < 600) {
+    return rainy;
+  } else if (num >= 600 && num < 700) {
+    return snow;
+  } else if (num >= 700 && num < 800) {
+    return foggy;
+  } else if (num === 800) {
+    return sunny;
+  } else {
+    return cloudy;
+  }
+}
+
+export { minutesDisplay, hourDisplay, iconSelection };

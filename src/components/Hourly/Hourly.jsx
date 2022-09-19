@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import './hourly.css';
 import { minutesDisplay, hourDisplay } from '../helpers';
+import { iconSelection } from '../helpers';
 
 const Hourly = ({ currentData }) => {
   const { weather, loading } = currentData;
   const [time, setTime] = useState([]);
   const [date, setDate] = useState([]);
   const [temp, setTemp] = useState([]);
-  const [description, setDescription] = useState([]);
+  const [icons, setIcons] = useState([]);
   const loaded = Boolean(loading === false && weather.hourly);
 
   useEffect(() => {
@@ -22,11 +23,8 @@ const Hourly = ({ currentData }) => {
       let temps = weather.hourly.map((hour) => {
         return Math.round(hour.temp) + '°F';
       });
-      let descriptions = weather.hourly.map((hour) => {
-        return (
-          hour.weather[0].description.charAt(0).toUpperCase() +
-          hour.weather[0].description.slice(1)
-        );
+      let iconIds = weather.hourly.map((hour) => {
+        return hour.weather[0].id;
       });
       let dates = weather.hourly.map((hour) => {
         let todaysDate = new Date(hour.dt * 1000);
@@ -35,7 +33,7 @@ const Hourly = ({ currentData }) => {
       setDate(dates);
       setTime(hours);
       setTemp(temps);
-      setDescription(descriptions);
+      setIcons(iconIds);
     }
   }, [currentData]);
 
@@ -51,7 +49,13 @@ const Hourly = ({ currentData }) => {
                     <div className="hourly-date">{date[index]}</div>
                     <div className="hourly-time">{hour}</div>
                     <div className="hourly-temp">{temp[index]}</div>
-                    <div>{description[index]}</div>
+
+                    <div className="hourly-icon">
+                      <img
+                        src={iconSelection(icons[index])}
+                        alt="weather icon"
+                      />
+                    </div>
                   </div>
                 );
               })}
