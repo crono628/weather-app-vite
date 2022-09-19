@@ -10,7 +10,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px 10px;
   width: 90%;
   box-shadow: 0 0 5px 0 rgba(255, 254, 254, 0.75);
   border-radius: 5px;
@@ -23,8 +22,10 @@
   width: 100%;
   font-size: calc(5px + 2vmin);
   font-weight: 100;
+}
+
+.border-bottom {
   border-bottom: 1px solid rgba(255, 255, 255, 0.464);
-  margin-bottom: 10px;
 }
 
 .daily-icon,

@@ -35,7 +35,12 @@ const Daily = ({ currentData }) => {
         <div className="daily-container">
           {date.map((day, index) => {
             return (
-              <div className="daily-day" key={index}>
+              <div
+                className={`daily-day ${
+                  index >= date.length - 1 ? '' : 'border-bottom'
+                }`}
+                key={index}
+              >
                 <div className="daily-date">{day}</div>
                 <div className="daily-temp">{temp[index]}</div>
                 <div className="daily-icon">
